@@ -1,4 +1,4 @@
-# LogisticRegression
+# Logistic Regression
 ## Prediction of Coronary Heart Disease Using Logistic Regression Binary Classifier
 In this task we predict the Ten Year Risk of Coronary Heart Disease using Logistic Regression. Given the low correlation coefficients in the correlation matrix of the dependent and independent variables, feature selection is performed using the Chi-squared test. Analysis and accuracy of the prediction of variable, "TenYearCHD" with a classification threshold of 0.5 results in a very low f1_score of 13.47%. However, with a classification threshold of 0.2, the f1_score increases to 38.44%. 
 
