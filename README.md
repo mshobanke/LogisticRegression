@@ -1,9 +1,30 @@
 # Logistic Regression
 ## Prediction of Coronary Heart Disease Using Logistic Regression Binary Classifier
-In this task we predict the Ten Year Risk of Coronary Heart Disease using Logistic Regression. Given the low correlation coefficients in the correlation matrix of the dependent and independent variables, feature selection is performed using the Chi-squared test. Analysis and accuracy of the prediction of variable, "TenYearCHD" with a classification threshold of 0.5 results in a very low f1_score of 13.47%. However, with a classification threshold of 0.2, the f1_score increases to 38.44%. 
+In this task, we utilize Logistics Regression to predict the risk of heart disease taking into consideration factors that affect cardiovascular health. According to the CDC, these factors include:
+- Smoking and Secondhand Smoke Exposure
+- High blood pressure
+- High low-density lipoprotein (LDL) cholesterol
+- Diabetes
+- Obesity, unhealthy diet, and Physical inactivity
 
-On the basis that age and gender could be confounder variables that result in distortion of the association between exposures and outcome in the dataset, the variable age_grp is introduced to classify each record into respective age groups and stratify each age_grp data by gender. For further analysis, the dataset is reprocessed into probability values, with the assumption that values of exposure variables could be probability values such that probability of TenYearCHD given an individual is exposed is a multiple of the probability of TenYearCHD given an individual isn't exposed, where the Pr(TenYearCHD|exposed) = Pr(TenYearCHD|unexposed) * Adjusted_Risk_Ratio. The prediction is redone using classification threshold of 0.2
+The dataset used for this analysis is obtained from the Framingham Study, which consists of 4239 surveyed individuals before data cleaning.
 
-**Proof of Age and Gender as Confounding Variables**: https://github.com/mshobanke/Apache-Spark-MLlib-Random-Forest-Logistic-Regression
+## Result
+Using F1 score, we obtain a model accuracy of 13.5%. In a bid to improve model accuracy, we explore the following:
+1. Writing the Logistics Regression from Scratch, prioritizing optimization of the regression coefficient estimates over latency:
+    - The above approach led to an increase in accuracy from 13.5% to 15.1%
+    - The image below shows the optimization strategy employed during development of the algorithm from scratch 
+    ![Code Improvement](code_improvement.png)
 
-**Presentation File**: https://docs.google.com/presentation/d/1esVlCQLHBVcXPKJK2AFHA8W4pqrv6exB/edit?usp=share_link&ouid=102783274469468293710&rtpof=true&sd=true
+2. Hyperparameter: 
+    - Through research and exploratory analysis, approximation threshold is reduced to 20% following findings made from the Framingham study, leading to a 185% increase in model accuracy from 13.5% t0 38.44%, and 155% increase from 15.1% to 38.44%
+
+3. Examining Bias: 
+    - Further analysis was conducted on the variables age and gender to consider their potential influence as confounders. This involved data stratification and reprocessing. Although these steps resulted in a decrease in model accuracy, it is advisable to explore the dataset for the presence of any other underlying bias, necessitating additional analysis.
+
+## Collaborators
+- Mobolaji Shobanke
+- Martin Banghart
+- Raffa Nimir
+- Ashhwath Chandramohan
+- Temiwunmi Akinmuleya
